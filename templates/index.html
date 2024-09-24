@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hangman Game</h1>
+
+        <!-- Display the word with spaces between the letters -->
+        <p>Word: {% for letter in word %}{{ letter }} {% endfor %}</p>
+
+        <!-- Display incorrect guesses -->
+        <p class="incorrect-guesses">Incorrect Guesses: {{ incorrect|join(', ') }}</p>
+
+        <!-- Display remaining attempts -->
+        <p class="remaining-attempts">Remaining Attempts: {{ attempts }}</p>
+
+        <!-- Form to submit guesses -->
+        <form action="/guess" method="POST">
+            <input type="text" id="letter" name="letter" maxlength="1" required placeholder="Type a letter">
+            <button type="submit">Guess</button>
+        </form>
+
+        <!-- Link to restart the game -->
+        <a href="/reset">Restart Game</a>
+    </div>
+</body>
+</html>
